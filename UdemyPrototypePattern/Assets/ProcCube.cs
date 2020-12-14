@@ -127,6 +127,16 @@ public class ProcCube: Object
             m.gameObject.SetActive(false);
             i++; 
         }
+        cube.GetComponent<MeshFilter>().mesh = new Mesh();
+        cube.GetComponent<MeshFilter>().mesh.CombineMeshes(combine);
+        cube.GetComponent<MeshFilter>().mesh.name = "CreatedCube";
+        MeshRenderer rend = cube.GetComponent<MeshRenderer>();
+        rend.material = new Material(Shader.Find("Holistic/Plasma"));
+        cube.AddComponent<Rigidbody>();
+        cube.AddComponent<BoxCollider>();
+        cube.name = "Cube";
+        cube.gameObject.SetActive(true);
+        cube.transform.position = pos;
 
     }
 }
